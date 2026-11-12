@@ -1,0 +1,5 @@
+EcoImpacto — implementação funcional acadêmica
+
+Dez páginas HTML interligadas, CSS responsivo, JavaScript de navegação e acessibilidade, formulário demonstrativo sem envio a servidor e servidor Node para deploy.
+
+Indicadores e exemplos são fictícios. Pendências: inserir arquivo de áudio, substituir iframe por ID de vídeo educativo com legenda/transcrição, validar HTML, testar acessibilidade e responsividade, incluir preços/orçamento verificados e evidências de testes.
