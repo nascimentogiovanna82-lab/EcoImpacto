@@ -1,0 +1,1 @@
+{"name":"ecoimpacto","version":"1.0.0","private":true,"description":"Site acadêmico EcoImpacto","scripts":{"start":"node server.js"}}
