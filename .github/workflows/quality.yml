@@ -1,0 +1,56 @@
+name: EcoImpacto — qualidade e evidências
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Testes automatizados do projeto
+        run: npm test
+
+      - name: Configurar Java para o Nu Html Checker
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Validar HTML com Nu Html Checker
+        run: |
+          mkdir -p artifacts
+          curl -fsSL https://github.com/validator/validator/releases/latest/download/vnu.jar -o vnu.jar
+          java -jar vnu.jar --errors-only *.html 2>&1 | tee artifacts/w3c-validator.txt
+
+      - name: Lighthouse
+        run: |
+          npm start > /tmp/ecoimpacto-server.log 2>&1 &
+          for attempt in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:3000/ > /dev/null; then break; fi
+            sleep 2
+          done
+          npx --yes @lhci/cli@0.14.0 autorun --collect.url=http://127.0.0.1:3000/ --collect.numberOfRuns=1 --upload.target=filesystem --upload.outputDir=./artifacts/lighthouse
+
+      - name: Publicar relatórios de evidência
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecoimpacto-quality-reports
+          path: artifacts/
+          if-no-files-found: warn
+          retention-days: 30
