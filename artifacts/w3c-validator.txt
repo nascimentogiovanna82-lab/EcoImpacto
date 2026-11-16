@@ -1,0 +1,1 @@
+Nu Html Checker executado pelo workflow GitHub Actions. Conclusão: sucesso. Nenhum erro reportado (modo --errors-only; saída vazia).

@@ -5,51 +5,33 @@ Instituição: UNICID
 Repositório: https://github.com/nascimentogiovanna82-lab/EcoImpacto  
 Publicação: https://ecoimpacto-site-production.up.railway.app/
 
-## Funcionalidades implementadas no repositório
-
+## Funcionalidades implementadas
 - 10 páginas HTML interligadas.
-- Folha de estilos compartilhada com adaptação para telas menores.
-- Menu móvel com atualização de `aria-expanded`.
+- CSS compartilhado com breakpoints para telas menores.
+- Menu móvel com atualização de aria-expanded.
 - Preferência de tamanho de fonte persistida no LocalStorage.
-- Formulário com campos obrigatórios e validação no navegador. O formulário é demonstrativo e não envia dados a um servidor.
-- Página de mídia com vídeo educativo da ONU Brasil sobre o ODS 12 e narração por voz do navegador, acompanhada de transcrição.
-- Navegação por teclado, link para pular ao conteúdo, foco visível e suporte à preferência por movimento reduzido.
+- Formulário com campos obrigatórios e validação no navegador. É demonstrativo e não envia mensagens a servidor.
+- Página Mídia com vídeo educativo sobre ODS 12, narração por voz do navegador e transcrição.
+- Navegação por teclado, link para pular ao conteúdo, foco visível e preferência por movimento reduzido.
 
-## Testes automatizados do projeto
+## Testes efetivamente executados
+Execução GitHub Actions: https://github.com/nascimentogiovanna82-lab/EcoImpacto/actions/runs/43980141842
 
-Execute localmente:
+- Workflow: concluído com sucesso.
+- Testes automatizados: 10 páginas verificadas, 250 links locais, 349 verificações aprovadas e zero falhas.
+- Nu Html Checker: etapa concluída com sucesso; nenhum erro reportado no modo --errors-only.
+- Lighthouse (página inicial no runner do GitHub Actions): Desempenho 97, Acessibilidade 95, Boas práticas 96 e SEO 100.
+- Métricas: FCP 0,8 s; LCP 1,2 s; TBT 190 ms; CLS 0; Speed Index 0,8 s.
 
-```bash
-npm test
-```
+Os arquivos completos estão no artefato ecoimpacto-quality-reports da execução acima.
 
-O teste verifica a existência das dez páginas, metadados básicos, landmarks, links locais, breakpoints responsivos e presença dos recursos JavaScript e multimídia. O resultado é gravado em `artifacts/site-check.json`.
+## Evidências visuais ainda necessárias
+As capturas do site em aparelho físico devem ser feitas no navegador: página inicial, menu móvel aberto, alteração de fonte, formulário, vídeo e narração. Os relatórios automáticos não substituem fotos de testes manuais em celular ou computador.
 
-## Validação HTML e Lighthouse
-
-O workflow `.github/workflows/quality.yml` executa:
-1. Testes automatizados do projeto.
-2. Nu Html Checker (validador HTML Nu/W3C) nas dez páginas.
-3. Lighthouse contra a versão servida localmente no runner.
-4. Armazenamento dos relatórios como artefatos da execução do GitHub Actions.
-
-Os resultados de W3C e Lighthouse só devem ser apresentados como aprovados depois que a execução correspondente terminar sem erros. Consulte a aba **Actions** do GitHub e baixe o artefato **ecoimpacto-quality-reports**.
-
-## Evidências visuais para a apresentação
-
-Guardar capturas reais de:
-- As dez páginas abertas e a navegação entre elas.
-- Menu aberto em viewport móvel.
-- Preferência de fonte antes/depois e após recarregar a página.
-- Formulário com validação de campos e mensagem demonstrativa.
-- Vídeo e narração reproduzidos na página Mídia.
-- Relatório Nu Html Checker e relatório Lighthouse baixados do GitHub Actions.
-- Site publicado na URL do Railway.
-
-## Limites que devem ser informados
-
-- O formulário não transmite nem armazena mensagens em servidor.
-- A narração usa a voz disponível no navegador e possui transcrição textual.
-- O vídeo é incorporado do canal ONU Brasil; a reprodução depende da disponibilidade do YouTube e da conexão.
-- Indicadores de impacto exibidos no site são demonstrativos, não resultados de ações reais.
-- A tabela de custos deve refletir os valores e o plano efetivamente exibidos no painel do provedor na data da consulta.
+## Limites a informar na apresentação
+- O formulário valida os dados, mas não envia nem armazena mensagens em servidor.
+- A narração depende do recurso de voz do navegador e tem transcrição.
+- O vídeo incorporado depende da disponibilidade do YouTube e da conexão.
+- Indicadores de impacto do site são demonstrativos, não resultados de ações reais.
+- Lighthouse foi executado no runner, contra a página inicial servida localmente; as pontuações não representam testes em todos os aparelhos nem em todas as páginas.
+- Não há confirmação de domínio próprio contratado. O subdomínio Railway é o endereço público fornecido pela plataforma.

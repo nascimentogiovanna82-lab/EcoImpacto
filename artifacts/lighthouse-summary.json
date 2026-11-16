@@ -1,0 +1,17 @@
+{
+  "workflow": "https://github.com/nascimentogiovanna82-lab/EcoImpacto/actions/runs/43980141842",
+  "scores": {
+    "performance": 97,
+    "accessibility": 95,
+    "bestPractices": 96,
+    "seo": 100
+  },
+  "metrics": {
+    "FCP": "0.8 s",
+    "LCP": "1.2 s",
+    "TBT": "190 ms",
+    "CLS": "0",
+    "speedIndex": "0.8 s"
+  },
+  "scope": "Lighthouse foi executado no runner do GitHub Actions contra a página inicial servida localmente."
+}
