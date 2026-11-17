@@ -39,18 +39,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('contact-form');
   if (form) {
     form.addEventListener('submit', (event) => {
-      event.preventDefault();
       const status = document.getElementById('form-status');
-      status.className = 'form-status';
       if (!form.checkValidity()) {
+        event.preventDefault();
+        status.className = 'form-status error';
         status.textContent = 'Confira os campos e preencha os dados corretamente.';
-        status.classList.add('error');
         form.reportValidity();
         return;
       }
-      status.textContent = 'Validação concluída! Esta é uma demonstração: sua mensagem não foi enviada nem armazenada.';
-      status.classList.add('success');
-      form.reset();
+      status.className = 'form-status';
+      status.textContent = 'Enviando sua mensagem...';
     });
   }
 
